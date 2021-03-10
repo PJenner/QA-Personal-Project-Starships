@@ -10,4 +10,6 @@ public interface StarshipService {
 
 	List<Starship> getAllStarships();
 
+	Starship updateStarship(Long id, Starship newStarship);
+
 }
