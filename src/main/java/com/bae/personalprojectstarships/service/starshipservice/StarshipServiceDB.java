@@ -42,4 +42,11 @@ public class StarshipServiceDB implements StarshipService {
 
 	}
 
+	@Override
+	public boolean removeStarship(Long id) {
+		this.repo.deleteById(id);
+		boolean exists = this.repo.existsById(id);
+		return !exists;
+	}
+
 }
