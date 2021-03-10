@@ -1,6 +1,7 @@
 package com.bae.personalprojectstarships.service.starshipservice;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,20 @@ public class StarshipServiceDB implements StarshipService {
 	@Override
 	public List<Starship> getAllStarships() {
 		return this.repo.findAll();
+	}
+
+	@Override
+	public Starship updateStarship(Long id, Starship newStarship) {
+
+		Optional<Starship> existingOptional = this.repo.findById(id);
+		Starship existing = existingOptional.get();
+
+		existing.setName(newStarship.getName());
+		existing.setModel(newStarship.getModel());
+		existing.setAge(newStarship.getAge());
+
+		return this.repo.save(existing);
+
 	}
 
 }
