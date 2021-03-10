@@ -1,8 +1,11 @@
 package com.bae.personalprojectstarships.rest;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +52,21 @@ public class StarshipControllerIntegrationTest {
 		ResultMatcher matchBody = content().json(savedStarshipAsJSON);
 
 		this.mockMVC.perform(mockRequest).andExpect(matchStatus).andExpect(matchBody);
+	}
+
+	@Test
+	void testRead() throws Exception {
+		Starship testStarship = new Starship(1L, "Enterprise", "D", 12);
+		List<Starship> allStarships = List.of(testStarship);
+		String testStarshipAsJson = this.mapper.writeValueAsString(allStarships);
+
+		RequestBuilder mockRequest = get("/getAll");
+
+		ResultMatcher checkStatus = status().isOk();
+
+		ResultMatcher checkBody = content().json(testStarshipAsJson);
+
+		this.mockMVC.perform(mockRequest).andExpect(checkStatus).andExpect(checkBody);
 	}
 
 }
