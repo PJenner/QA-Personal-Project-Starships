@@ -3,6 +3,7 @@ package com.bae.personalprojectstarships.service;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -46,6 +47,24 @@ public class StarshipServiceDBUnitTest {
 
 		assertThat(this.service.getAllStarships()).isEqualTo(allStarships);
 
+	}
+
+	@Test
+	void testUpdate() {
+		Long id = 1L;
+
+		Starship newStarship = new Starship("Voyager", "M", 12);
+
+		Optional<Starship> optionalStarship = Optional.of(new Starship(id, "Voyager", "M", 12));
+
+		Starship updatedStarship = new Starship(id, newStarship.getName(), newStarship.getModel(),
+				newStarship.getAge());
+
+		Mockito.when(this.repo.findById(id)).thenReturn(optionalStarship);
+
+		Mockito.when(this.repo.save(updatedStarship)).thenReturn(updatedStarship);
+
+		assertThat(this.service.updateStarship(id, newStarship)).isEqualTo(updatedStarship);
 	}
 
 }
