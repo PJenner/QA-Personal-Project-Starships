@@ -2,6 +2,8 @@ package com.bae.personalprojectstarships.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +35,17 @@ public class StarshipServiceDBUnitTest {
 		assertThat(this.service.createStarship(newStarship)).isEqualTo(savedStarship);
 
 		Mockito.verify(this.repo, Mockito.times(1)).save(newStarship);
+	}
+
+	@Test
+	void testRead() {
+		Starship savedStarship = new Starship(1L, "Enterprise", "D", 12);
+		List<Starship> allStarships = List.of(savedStarship);
+
+		Mockito.when(this.service.getAllStarships()).thenReturn(allStarships);
+
+		assertThat(this.service.getAllStarships()).isEqualTo(allStarships);
+
 	}
 
 }
