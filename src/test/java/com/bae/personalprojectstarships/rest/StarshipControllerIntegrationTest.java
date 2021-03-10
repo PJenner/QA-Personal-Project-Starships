@@ -2,6 +2,7 @@ package com.bae.personalprojectstarships.rest;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -65,6 +66,24 @@ public class StarshipControllerIntegrationTest {
 		ResultMatcher checkStatus = status().isOk();
 
 		ResultMatcher checkBody = content().json(testStarshipAsJson);
+
+		this.mockMVC.perform(mockRequest).andExpect(checkStatus).andExpect(checkBody);
+	}
+
+	@Test
+	void testUpdate() throws Exception {
+		Starship updateTestStarship = new Starship("Voyager", "F", 17);
+		String updateTestStarshipAsJson = this.mapper.writeValueAsString(updateTestStarship);
+
+		RequestBuilder mockRequest = put("/update/1").contentType(MediaType.APPLICATION_JSON)
+				.content(updateTestStarshipAsJson);
+
+		Starship savedTestStarship = new Starship(1L, "Voyager", "F", 17);
+		String savedTestStarshipAsJSON = this.mapper.writeValueAsString(savedTestStarship);
+
+		ResultMatcher checkStatus = status().isOk();
+
+		ResultMatcher checkBody = content().json(savedTestStarshipAsJSON);
 
 		this.mockMVC.perform(mockRequest).andExpect(checkStatus).andExpect(checkBody);
 	}
