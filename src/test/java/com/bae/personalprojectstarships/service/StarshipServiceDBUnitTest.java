@@ -67,4 +67,22 @@ public class StarshipServiceDBUnitTest {
 		assertThat(this.service.updateStarship(id, newStarship)).isEqualTo(updatedStarship);
 	}
 
+	@Test
+	void testDelete() {
+		Long id = 1L;
+
+		Mockito.when(this.repo.existsById(id)).thenReturn(true);
+
+		assertThat(this.service.removeStarship(id)).isEqualTo(false);
+	}
+
+	@Test
+	void testDeleteTheSequel() {
+		Long id = 1L;
+
+		Mockito.when(this.repo.existsById(id)).thenReturn(false);
+
+		assertThat(this.service.removeStarship(id)).isEqualTo(true);
+	}
+
 }
