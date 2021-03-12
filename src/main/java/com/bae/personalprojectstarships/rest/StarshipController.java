@@ -3,7 +3,11 @@ package com.bae.personalprojectstarships.rest;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bae.personalprojectstarships.domain.Starship;
 import com.bae.personalprojectstarships.service.starshipservice.StarshipService;
 
+@CrossOrigin
 @RestController
 public class StarshipController {
 
