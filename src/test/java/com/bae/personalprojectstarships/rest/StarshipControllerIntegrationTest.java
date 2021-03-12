@@ -1,5 +1,6 @@
 package com.bae.personalprojectstarships.rest;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -84,6 +85,18 @@ public class StarshipControllerIntegrationTest {
 		ResultMatcher checkStatus = status().isOk();
 
 		ResultMatcher checkBody = content().json(savedTestStarshipAsJSON);
+
+		this.mockMVC.perform(mockRequest).andExpect(checkStatus).andExpect(checkBody);
+	}
+
+	@Test
+	void testDelete() throws Exception {
+
+		RequestBuilder mockRequest = delete("/delete/1");
+
+		ResultMatcher checkStatus = status().isOk();
+
+		ResultMatcher checkBody = content().string("true");
 
 		this.mockMVC.perform(mockRequest).andExpect(checkStatus).andExpect(checkBody);
 	}

@@ -12,4 +12,6 @@ public interface StarshipService {
 
 	Starship updateStarship(Long id, Starship newStarship);
 
+	boolean removeStarship(Long id);
+
 }
