@@ -26,7 +26,7 @@ This README outlines the project and provides guidance on how to run this applic
 
 The scope of this project, including the MVP, is outlined below:
 
-- Provide a Kanban style Jira board following the SCRUM methedology and applying Agile principles, outlining user stories and tasks. My Jira board can be found [here] (https://pjennerqa.atlassian.net/secure/RapidBoard.jspa?rapidView=2&atlOrigin=eyJpIjoiNjhlYWMzNzI5YTliNDM5Njg4NDAyNTEyMWExMmNiYjciLCJwIjoiaiJ9) 
+- Provide a Kanban style Jira board following the SCRUM methedology and applying Agile principles, outlining user stories and tasks. My Jira board can be found [here](https://pjennerqa.atlassian.net/secure/RapidBoard.jspa?rapidView=2&atlOrigin=eyJpIjoiNjhlYWMzNzI5YTliNDM5Njg4NDAyNTEyMWExMmNiYjciLCJwIjoiaiJ9) 
 
 - Clear Documentation outlining the project, approaches taken and technology used. For this, I am utilising this README file.
 
