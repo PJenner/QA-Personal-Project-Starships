@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS `starship` CASCADE;
+CREATE TABLE starship (
+    id BIGINT AUTO_INCREMENT,
+    name VARCHAR(255),
+    model VARCHAR(255),
+    age INTEGER NOT NULL,
+    PRIMARY KEY (id)
+);
